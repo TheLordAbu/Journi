@@ -1,27 +1,19 @@
-import { Link } from "react-router-dom";
-import PageNav from "../components/PageNav";
-import styles from "./Homepage.module.css";
+import LoginForm from "../features/auth/LoginForm";
 
-export default function Homepage() {
+function Homepage() {
   return (
-    <main className={styles.homepage}>
-      <PageNav />
-
-      <section>
-        <h1>
-          You travel the world.
-          <br />
-          WorldWise keeps track of your adventures.
-        </h1>
-        <h2>
-          A world map that tracks your footsteps into every city you can think
-          of. Never forget your wonderful experiences, and show your friends how
-          you have wandered the world.
-        </h2>
-        <Link to="/login" className="cta">
-          Start tracking now
-        </Link>
-      </section>
+    <main className="min-h-screen grid grid-cols-[48rem] content-center justify-center gap-[3.2rem] text-center">
+      <div>
+        <h1 className="font-black">Welcome to Journi</h1>
+        <p className="mb-4 italic meow text-xl">Your very own travel journal</p>
+        <p>
+          You travel the world, <br />
+          we keep track of everything
+        </p>
+      </div>
+      <LoginForm />
     </main>
   );
 }
+
+export default Homepage;
