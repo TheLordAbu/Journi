@@ -1,7 +1,9 @@
+import Heading from "../UI/Heading";
+
 function AppHomePage() {
   return (
     <div>
-      <h1>Welcome to Journi</h1>
+      <Heading>Welcome to Journi</Heading>
     </div>
   );
 }
