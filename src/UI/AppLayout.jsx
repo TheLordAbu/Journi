@@ -1,14 +1,18 @@
 import { Outlet } from "react-router-dom";
-import PageNav from "./PageNav";
+import MainNav from "./MainNav";
+import TopNav from "./TopNav";
 
 function AppLayout() {
   return (
-    <>
-      <PageNav />
+    <div className="grid grid-cols-[316px_minmax(900px,_1fr)] grid-rows-[auto, 1fr]">
+      <MainNav />
       <main>
-        <Outlet />
+        <TopNav />
+        <div className="px-4">
+          <Outlet />
+        </div>
       </main>
-    </>
+    </div>
   );
 }
 

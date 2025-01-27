@@ -3,6 +3,8 @@ import AppLayout from "./UI/AppLayout";
 import Error from "./pages/Error";
 import Homepage from "./pages/Homepage";
 import AppHomePage from "./pages/AppHomePage";
+import Trips from "./pages/Trips";
+import Map from "./pages/Map";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +14,12 @@ const router = createBrowserRouter([
   {
     element: <AppLayout />,
     errorElement: <Error />,
-    children: [{ path: "/app", element: <AppHomePage /> }],
+    children: [
+      { path: "/app", element: <AppHomePage /> },
+      { path: "/trips", element: <Trips /> },
+    ],
   },
+  { path: "/map", element: <Map /> },
 ]);
 
 function App() {
