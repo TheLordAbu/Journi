@@ -12,7 +12,7 @@ function TopNav() {
           </button>
         </li>
         <li>
-          <button className="p-2 cursor-pointer">
+          <button className="p-2 cursor-pointer ">
             <HiOutlineMoon />
           </button>
         </li>
