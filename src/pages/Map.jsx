@@ -3,6 +3,7 @@ import { gridLayout, navBarStyles } from "../utils/Styles";
 import { MapContainer, TileLayer } from "react-leaflet";
 
 function Map() {
+  const position = [51.505, -0.09];
   return (
     <div className="relative">
       <div className={`${gridLayout}`}>
@@ -15,7 +16,7 @@ function Map() {
           </nav>
           <div className="mapContainer">
             <MapContainer
-              center={[51.505, -0.09]}
+              center={position}
               zoom={6}
               scrollWheelZoom={false}
               className="map"
