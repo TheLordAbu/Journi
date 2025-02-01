@@ -1,17 +1,22 @@
 import { NavLink } from "react-router-dom";
-import { gridLayout, navBarStyles } from "../utils/Styles";
+import { gridLayout } from "../../utils/Styles";
 import { MapContainer, TileLayer } from "react-leaflet";
+import { HiOutlineHome } from "react-icons/hi";
+import SideNav from "../../features/map/SideNav";
 
-function Map() {
+function Cities() {
   const position = [51.505, -0.09];
   return (
     <div className="relative">
       <div className={`${gridLayout}`}>
-        <div className={`${navBarStyles}`}>Sidebar</div>
+        <SideNav />
         <div>
-          <nav className="px-6 rounded absolute top-8 right-8 h-16 flex items-center justify-center bg-gray-50 mb-4 border-b border-gray-200 z-10 shadow-sm shadow-gray-200">
+          <nav className="px-4 rounded absolute top-8 right-8 h-12 flex items-center justify-center bg-(--color-brand) mb-4 z-[9999] shadow-xl shadow-black-200 text-white font-semibold">
             <NavLink to="/app">
-              <h2>&larr; Back to home</h2>
+              <h2 className="flex gap-2">
+                <HiOutlineHome />
+                <span>Home</span>
+              </h2>
             </NavLink>
           </nav>
           <div className="mapContainer">
@@ -33,4 +38,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default Cities;

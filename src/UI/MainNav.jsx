@@ -12,10 +12,10 @@ function MainNav() {
         <NavButton link="/app" icon={<HiOutlineHome />}>
           Dashboard
         </NavButton>
-        <NavButton link="/trips" icon={<MdOutlineTravelExplore />}>
-          Trips
+        <NavButton link="/journis" icon={<MdOutlineTravelExplore />}>
+          Journis
         </NavButton>
-        <NavButton link="/map" icon={<GrMapLocation />}>
+        <NavButton link="/cities" icon={<GrMapLocation />}>
           Map
         </NavButton>
       </div>

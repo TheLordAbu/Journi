@@ -1,6 +1,11 @@
 @import "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
 @import "tailwindcss";
 
+@theme {
+  --color-brand: #eb2f64;
+  --color-brand-light: #ff3366;
+  --color-brand-dark: #ba265d;
+}
 :root {
   /* COLOURS */
   --color-grey-0: #fff;

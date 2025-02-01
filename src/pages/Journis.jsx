@@ -1,7 +1,7 @@
-import TripInfoCard from "../features/trips/TripInfoCard";
+import JourniInfoCard from "../features/journis/JourniInfoCard";
 import Heading from "../UI/Heading";
 
-function Trips() {
+function Journis() {
   const data = [
     { id: 1, Country: "Spain", Town: "Madrid" },
     { id: 2, Country: "Spain", Town: "Barcelona" },
@@ -11,14 +11,14 @@ function Trips() {
 
   return (
     <div className="w-full">
-      <Heading>Trips</Heading>
+      <Heading>Journis</Heading>
       <ul>
-        {data.map((trip) => (
-          <TripInfoCard key={trip.id} trip={trip} />
+        {data.map((journi) => (
+          <JourniInfoCard key={journi.id} journi={journi} />
         ))}
       </ul>
     </div>
   );
 }
 
-export default Trips;
+export default Journis;
