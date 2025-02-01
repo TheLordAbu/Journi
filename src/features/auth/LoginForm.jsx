@@ -32,7 +32,7 @@ function LoginForm() {
         <button type="submit">
           <Link
             to="/app"
-            className="px-3.5 py-2.5 border font-bold border-cyan-600 rounded-md text-cyan-600 hover:border-cyan-700 hover:text-cyan-700"
+            className="px-3.5 py-2.5 border font-bold border-rose-600 rounded-md text-rose-600 hover:border-rose-700 hover:text-rose-700"
           >
             Login
           </Link>
@@ -40,7 +40,7 @@ function LoginForm() {
         <button type="submit">
           <Link
             to="/app"
-            className="px-3.5 py-2.5 rounded-md font-bold text-gray-50 bg-cyan-600 hover:bg-cyan-700"
+            className="px-3.5 py-2.5 rounded-md font-bold text-gray-50 bg-rose-600 hover:bg-rose-700"
           >
             Create an account
           </Link>

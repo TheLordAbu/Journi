@@ -9,7 +9,7 @@ function AppHomePage() {
         <Heading type="h3">
           Here&apos;s an overview your journies so far
         </Heading>
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-4 gap-4">
           <Stats />
           <Stats />
           <Stats />
