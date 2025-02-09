@@ -13,7 +13,7 @@ function NavButton({ children, link, icon, type }) {
           to={link}
           className={
             isCurrentPage
-              ? `${base} bg-(--color-brand) rounded`
+              ? `${base} bg-(--color-brand) rounded text-white`
               : `${base} bg-stone-800`
           }
         >
@@ -25,7 +25,7 @@ function NavButton({ children, link, icon, type }) {
     <button className="w-full cursor-pointer">
       <NavLink
         to={link}
-        className="flex gap-2 items-center text-gray-300 p-2 py-4 navlink cursor-pointer font-semibold before:content-[''] relative"
+        className="flex gap-2 items-center text-gray-300 px-4 py-4 navlink cursor-pointer font-semibold relative"
       >
         <span className="absolute top-0 left-0 w-2 h-full "></span>
         <span className="z-10">{icon}</span>
