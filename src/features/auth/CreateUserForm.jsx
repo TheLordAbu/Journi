@@ -3,12 +3,27 @@ import { Link } from "react-router-dom";
 import Form from "../../UI/Form";
 import FormRow from "../../UI/FormRow";
 import Input from "../../UI/Input";
+import useBodyBackground from "../hooks/useBodyBackground";
+import beach from "/beach-bg.png";
 
-function LoginForm() {
+function CreateUserForm() {
+  const [name, setName] = useState("Abdul Abu");
   const [email, setEmail] = useState("abdul@example.com");
   const [password, setPassword] = useState("JSRJS");
+
+  useBodyBackground(beach);
   return (
     <Form>
+      <FormRow label="Full Name">
+        <Input
+          type="text"
+          id="name"
+          placeholder="Your Full Name"
+          autoComplete="customer-name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </FormRow>
       <FormRow label="Email address">
         <Input
           type="email"
@@ -32,14 +47,6 @@ function LoginForm() {
         <button type="submit">
           <Link
             to="/app"
-            className="px-3.5 py-2.5 border font-bold border-rose-600 rounded-md text-rose-600 hover:border-rose-700 hover:text-rose-700"
-          >
-            Login
-          </Link>
-        </button>
-        <button type="submit">
-          <Link
-            to="/create-account"
             className="px-3.5 py-2.5 rounded-md font-bold text-gray-50 bg-rose-600 hover:bg-rose-700"
           >
             Create an account
@@ -50,4 +57,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default CreateUserForm;

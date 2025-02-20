@@ -25,7 +25,11 @@ function Logo({ type }) {
     );
   return (
     <div className="flex flex-col place-items-center">
-      <img className="h-36 w-auto object-fill" src={src} alt="Logo" />
+      <img
+        className="h-36 w-auto object-fill drop-shadow-xl"
+        src={src}
+        alt="Logo"
+      />
       <h1 className="font-extrabold text-[60px] italic text-gray-200">
         Journi
       </h1>

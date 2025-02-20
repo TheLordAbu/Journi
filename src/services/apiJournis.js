@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import supabase, { supabaseUrl } from "./supabase";
 
 export async function getJournis() {
   const { data: journis, error } = await supabase.from("Journis").select("*");
@@ -11,6 +11,49 @@ export async function getJournis() {
   return journis;
 }
 
+export async function createEditJourni(newJourni, id) {
+  const hasImagePath = newJourni.thumbnail?.startsWith?.(supabaseUrl);
+  const imageName = `${Math.random()}--${newJourni.thumbnail.name}`.replaceAll(
+    "/",
+    ""
+  );
+
+  const imagePath = hasImagePath
+    ? newJourni.thumbnail
+    : `${supabaseUrl}/storage/v1/object/JourniImages/${imageName}`[0];
+
+  let query = supabase.from("Journis");
+  // Create
+  if (!id) query = query.insert([{ ...newJourni, thumbnail: imagePath }]);
+  //edit
+  if (id)
+    query = query
+      .update({ ...newJourni, thumbnail: imagePath })
+      .eq("id", id)
+      .select();
+  const { data, error } = await query.select.single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Journi could not be created");
+  }
+  // Upload image
+  if (hasImagePath) return data;
+
+  const { error: storageError } = await supabase.storage
+    .from("JourniImages")
+    .upload(imageName, newJourni.image);
+
+  // delete cabin if error uploading image
+  if (storageError) {
+    await supabase.from("Journis").delete().eq("id", data.id);
+    console.error(storageError);
+    throw new Error(
+      "Journi image could not be uploaded and Journi was not created"
+    );
+  }
+  return data;
+}
 // export async function getImages() {
 //   const {data, error} = await supabase.storage.from('JournImages').list(user?.id + '/', {
 //     limit: 100,

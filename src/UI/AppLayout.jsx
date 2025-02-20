@@ -8,7 +8,7 @@ function AppLayout() {
       <MainNav />
       <main>
         <TopNav />
-        <div className="md:px-11 px-4 py-6 flex gap-y-12">
+        <div className="md:px-11 p-0 md:py-6 flex gap-y-12">
           <Outlet />
         </div>
       </main>
