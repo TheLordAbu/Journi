@@ -57,6 +57,11 @@ body {
   );
   padding: 1em;
 }
+@media screen and (max-width: 1024px) {
+  body {
+    padding: 0em;
+  }
+}
 a {
   text-decoration: inherit;
 }

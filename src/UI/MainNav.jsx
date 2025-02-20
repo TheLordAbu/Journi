@@ -6,9 +6,9 @@ import Logo from "./Logo";
 
 function MainNav() {
   return (
-    <nav className="flex flex-col items-center py-3h-screen bg-stone-900 border-r border-r-gray-200">
+    <nav className="flex flex-col items-center lg:py-3 h-fit lg:h-screen bg-stone-900 border-r border-r-gray-200">
       <Logo type="small" />
-      <div className="flex items-center flex-col justify-between gap-2 w-full">
+      <div className="flex items-center lg:flex-col justify-between gap-2 w-full">
         <NavButton link="/app" icon={<HiOutlineHome />}>
           Dashboard
         </NavButton>

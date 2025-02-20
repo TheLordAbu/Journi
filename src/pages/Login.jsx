@@ -1,7 +1,7 @@
 import LoginForm from "../features/auth/LoginForm";
 import Logo from "../UI/Logo";
 
-function Homepage() {
+function Login() {
   return (
     <main className="min-h-screen grid grid-cols-[38rem] content-center justify-center gap-[3.2rem] text-center">
       <Logo />
@@ -10,4 +10,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default Login;

@@ -3,8 +3,12 @@ function Logo({ type }) {
   const src = "/earth.png";
   if (type == "small")
     return (
-      <div className="w-full flex flex-col items-center px-6 my-8">
-        <img className="h-20 w-auto object-fill " src={src} alt="Logo" />
+      <div className="w-full flex flex-col items-center px-6 lg:my-8 my-4">
+        <img
+          className="h-20 w-auto object-fill hidden lg:block"
+          src={src}
+          alt="Logo"
+        />
         <h1 className="font-extrabold text-3xl italic mt-2 text-gray-200">
           Journi
         </h1>
