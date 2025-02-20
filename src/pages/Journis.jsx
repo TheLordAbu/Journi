@@ -8,6 +8,7 @@ import Empty from "../UI/Empty";
 import JourniTeaser from "../features/journis/JourniTeaser";
 import Container from "../UI/Container";
 import CreateJourniForm from "../features/journis/CreateJourniForm";
+import Button from "../UI/Button";
 
 function Journis() {
   const [showForm, setShowForm] = useState(false);
@@ -23,12 +24,12 @@ function Journis() {
           <div className="flex gap-4 items-center">
             <span>Filter</span>
             <span>Sort</span>
-            <button
+            <Button
+              type="icon"
               onClick={() => setShowForm((showForm) => !showForm)}
-              className="flex items-center gap-2 bg-(--color-brand) p-2 rounded text-gray-50 font-semibold tracking-wide cursor-pointer"
             >
-              Add New Journi <FaPlus />
-            </button>
+              Add New Journi {<FaPlus />}
+            </Button>
           </div>
         </Row>
         {showForm && <CreateJourniForm />}

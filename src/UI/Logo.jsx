@@ -3,9 +3,9 @@ function Logo({ type }) {
   const src = "/earth.png";
   if (type == "small")
     return (
-      <div className="w-full flex flex-col items-center px-6 lg:my-8 my-4">
+      <div className="w-full flex lg:flex-col gap-2 justify-center items-center px-6 lg:my-8 my-4">
         <img
-          className="h-20 w-auto object-fill hidden lg:block"
+          className="h-8 lg:h-20 w-auto object-fill lg:block"
           src={src}
           alt="Logo"
         />
