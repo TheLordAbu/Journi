@@ -1,6 +1,8 @@
+import { useForm } from "react-hook-form";
 import FormRow from "../../UI/FormRow";
 import Input from "../../UI/Input";
 function CreateJourniForm() {
+  const { register, handleSubmit } = useForm();
   return (
     <>
       <FormRow label="City">

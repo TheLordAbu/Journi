@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import Form from "../../UI/Form";
 import FormRow from "../../UI/FormRow";
 import Input from "../../UI/Input";
+import beach from "/beach-bg.png";
+import useBodyBackground from "../hooks/useBodyBackground";
 
 function LoginForm() {
   const [email, setEmail] = useState("abdul@example.com");
   const [password, setPassword] = useState("JSRJS");
+  useBodyBackground(beach);
+
   return (
     <Form>
       <FormRow label="Email address">

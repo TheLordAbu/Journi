@@ -1,5 +1,6 @@
 import { useJournis } from "../features/journis/useJournis";
 import { useState } from "react";
+import { FaPlus } from "react-icons/fa6";
 import Loader from "../UI/Loader";
 import Row from "../UI/Row";
 import Heading from "../UI/Heading";
@@ -19,12 +20,15 @@ function Journis() {
       <Container>
         <Row type="row">
           <Heading>Journis</Heading>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <span>Filter</span>
             <span>Sort</span>
-            <span onClick={() => setShowForm((showForm) => !showForm)}>
-              Add New Cabin
-            </span>
+            <button
+              onClick={() => setShowForm((showForm) => !showForm)}
+              className="flex items-center gap-2 bg-(--color-brand) p-2 rounded text-gray-50 font-semibold tracking-wide cursor-pointer"
+            >
+              Add New Journi <FaPlus />
+            </button>
           </div>
         </Row>
         {showForm && <CreateJourniForm />}
