@@ -1,9 +1,10 @@
-function Button({ type, children, icon, onClick }) {
+function Button({ type, children, icon, onClick, disabled }) {
   if (type == "icon")
     return (
       <button
         className="px-4 py-2 rounded flex items-center justify-center bg-gradient-to-r from-brand-light to-brand-dark shadow-md text-gray-50 font-semibold cursor-pointer"
         onClick={onClick}
+        disabled={disabled}
       >
         {icon} {children}
       </button>
@@ -21,6 +22,7 @@ function Button({ type, children, icon, onClick }) {
     <button
       className="px-4 py-2 rounded bg-gradient-to-r from-brand-light to-brand-dark shadow-md text-gray-50 font-semibold cursor-pointer"
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

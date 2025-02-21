@@ -63,7 +63,7 @@ function App() {
               fontSize: "16px",
               maxWidth: "500px",
               padding: "16px 24px",
-              backgroundColor: "bg-(--color-brand)",
+              backgroundColor: "#1f293778",
               color: "#fff",
             },
           }}

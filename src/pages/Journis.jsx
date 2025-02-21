@@ -15,7 +15,6 @@ function Journis() {
   const { isLoading, journis } = useJournis();
 
   if (isLoading) return <Loader />;
-  if (!journis.length) return <Empty resourceName="Journis" />;
   return (
     <div className="w-full">
       <Container>
@@ -33,6 +32,7 @@ function Journis() {
           </div>
         </Row>
         {showForm && <CreateJourniForm />}
+        {!journis.length && <Empty resourceName="Journis" />}
         <ul className=" grid md:grid-cols-2 gap-2">
           {journis.map((journi) => (
             <JourniTeaser key={journi.id} journi={journi} />

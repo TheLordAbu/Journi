@@ -9,7 +9,9 @@ function Row({ children, type }) {
     return (
       <div className="flex gap-3 justify-end items-center">{children}</div>
     );
-  return <div className="flex justify-between items-center">{children}</div>;
+  return (
+    <div className="flex justify-between items-center mb-8">{children}</div>
+  );
 }
 
 export default Row;

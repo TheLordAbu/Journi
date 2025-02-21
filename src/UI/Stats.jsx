@@ -14,8 +14,8 @@ import { IoAirplaneOutline } from "react-icons/io5";
 // }
 function Stats() {
   return (
-    <div className="grid grid-cols-5 gap-4 bg-gray-300 p-4 rounded-md">
-      <div className="bg-rose-500 flex justify-center items-center rounded-[50%] h-auto aspect-square">
+    <div className="flex flex-col lg:flex-row gap-4 bg-gray-300 p-4 rounded-md">
+      <div className="bg-rose-500 flex justify-center items-center rounded-[50%] lg:w-[30%] w-11 h-11 lg:h-auto aspect-square">
         <IoAirplaneOutline className="text-white" />
       </div>
       <div className="flex flex-col gap-1 col-span-4 justify-center">

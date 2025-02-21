@@ -4,7 +4,7 @@ function FormRow({ label, error, children, type }) {
     return (
       <div className="flex gap-2.5 text-left py-5.5">
         {children}
-        {error && <spam className="text-sm text-red-500">{error}</spam>}
+        {error && <span className="text-sm text-red-500">{error}</span>}
       </div>
     );
 
@@ -12,7 +12,9 @@ function FormRow({ label, error, children, type }) {
     <div className="flex flex-col gap-2.5 text-left py-3.5">
       <label className="text-gray-900 font-bold text-md">{label}</label>
       {children}
-      {error && <spam className="text-sm text-red-500">{error}</spam>}
+      {error && (
+        <span className="text-sm text-red-500 font-semibold">{error}</span>
+      )}
     </div>
   );
 }

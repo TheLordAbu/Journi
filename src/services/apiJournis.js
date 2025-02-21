@@ -11,6 +11,33 @@ export async function getJournis() {
   return journis;
 }
 
+export async function deleteJourni(id) {
+  const { data: journi, error } = await supabase
+    .from("Journis")
+    .delete()
+    .eq("id", id);
+  if (error) {
+    console.error(error);
+    throw new Error("Journi could not be deleted");
+  }
+
+  return journi;
+}
+
+export async function createNewJourni(newJourni) {
+  const { data: journi, error } = await supabase
+    .from("Journis")
+    .insert([newJourni])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Journis could not be load");
+  }
+
+  return journi;
+}
+
 export async function createEditJourni(newJourni, id) {
   const hasImagePath = newJourni.thumbnail?.startsWith?.(supabaseUrl);
   const imageName = `${Math.random()}--${newJourni.thumbnail.name}`.replaceAll(
@@ -54,6 +81,7 @@ export async function createEditJourni(newJourni, id) {
   }
   return data;
 }
+
 // export async function getImages() {
 //   const {data, error} = await supabase.storage.from('JournImages').list(user?.id + '/', {
 //     limit: 100,
