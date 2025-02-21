@@ -19,7 +19,7 @@ function JourniTeaser({ journi }) {
         <RiDeleteBin6Line />
       </div>
       <Link to={`/journis/${id}`} className="h-full w-full">
-        <img src="/Madrid.jpg" alt={`${(city, country)}`} />
+        <img src={thumbnail} alt={`${(city, country)}`} />
         <span className="flex items-center bg-stone-900/20 text-gray-100 tracking-wide font-semibold letter-spacing text-sm p-2 rounded-lg w-fit absolute bottom-4 left-4 group-hover:-translate-y-12 shadow-md shadow-black/50">
           <CiLocationOn />
           {city}, {country}

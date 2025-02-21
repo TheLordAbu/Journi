@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { createNewJourni } from "../../services/apiJournis";
+import { createEditJourni } from "../../services/apiJournis";
 import FormRow from "../../UI/FormRow";
 import Input from "../../UI/Input";
 import Row from "../../UI/Row";
@@ -14,7 +14,7 @@ function CreateJourniForm() {
   const { errors } = formState;
   const queryClient = useQueryClient();
   const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: createNewJourni,
+    mutationFn: createEditJourni,
     onSuccess: () => {
       toast.success("New Journi created successfully");
       queryClient.invalidateQueries({ queryKey: ["Journis"] });
@@ -24,7 +24,8 @@ function CreateJourniForm() {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    // console.log(data);
+    mutate({ ...data, thumbnail: data.thumbnail[0], images: data.images });
   }
 
   function onError(errors) {
@@ -88,12 +89,28 @@ function CreateJourniForm() {
           />
         </FormRow>
       </Row>
-      <FormRow label="Thumbnail">
-        <FileInput id="image" accept="image/*" type="thumbnail" />
-      </FormRow>
-      <FormRow label="Upload Photos From Your Trip">
-        <FileInput id="image" accept="image/*" />
-      </FormRow>
+      <Row type="2-cols">
+        <FormRow label="Thumbnail">
+          <FileInput
+            id="image"
+            accept="image/*"
+            varation="thumbnail"
+            {...register("thumbnail", {
+              required: "This field is required",
+            })}
+          />
+        </FormRow>
+        <FormRow label="Upload Photos From Your Trip">
+          <FileInput
+            id="images"
+            accept="image/*"
+            multiple
+            {...register("images", {
+              required: "This field is required",
+            })}
+          />
+        </FormRow>
+      </Row>
       <Row type="end">
         <button
           type="reset"
