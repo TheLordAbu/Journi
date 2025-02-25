@@ -1,19 +1,18 @@
-import { Link, useParams } from "react-router-dom";
-import { useMoveBack } from "../hooks/useMoveBack";
-import { useJournis } from "./useJournis";
+// import { useMoveBack } from "../hooks/useMoveBack";
 import Loader from "../../UI/Loader";
+import Carousel from "../../UI/Carousel";
+import { useGetJourni } from "./useGetJourni";
 
 function Journi() {
-  const { isLoading } = useJournis();
-  const id = useParams().id;
-
+  const { isLoading, error, journi } = useGetJourni();
+  console.log(journi);
+  // const { city, country, description } = journi;
   if (isLoading) return <Loader />;
   return (
-    <div>
-      <Link onClick={useMoveBack()}>&larr; Go back</Link>
-      <p>HI welcome to Journi {id}</p>
+    <div className="w-full journi-container">
+      <Carousel />
+      <div className="bg-gray-100 py-3 px-4"></div>
     </div>
   );
 }
-
 export default Journi;

@@ -11,6 +11,20 @@ export async function getJournis() {
   return journis;
 }
 
+export async function getJourni(id) {
+  const { data: journi, error } = await supabase
+    .from("Journis")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Journi not found");
+  }
+  return journi;
+}
+
 export async function deleteJourni(id) {
   const { data: journi, error } = await supabase
     .from("Journis")
@@ -31,7 +45,7 @@ export async function createEditJourni(newJourni, id) {
   }`.replaceAll("/", "");
   const thumbnailPath = hasImagePath
     ? newJourni.thumbnail
-    : `${supabaseUrl}/storage/v1/object/JourniImages/${thumbnailName}`[0];
+    : `${supabaseUrl}/storage/v1/object/JourniImages/${thumbnailName}`;
 
   let query = supabase.from("Journis");
   // Create

@@ -1,9 +1,18 @@
 import ReactCountryFlag from "react-country-flag";
-import useCountryNameToFlag from "../hooks/useCountryNameToFlag";
+import { getCode } from "country-list";
 
-function CountryCode() {
-  const { countryCode } = useCountryNameToFlag();
-  return <ReactCountryFlag countryCode={countryCode} />;
+function CountryCode({ country }) {
+  const countryCode = getCode(country);
+  return (
+    countryCode && (
+      <ReactCountryFlag
+        countryCode={countryCode}
+        svg
+        style={{ width: "1.2em", height: "1.2em" }}
+        className="ml-2"
+      />
+    )
+  );
 }
 
 export default CountryCode;

@@ -1,38 +1,38 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { createEditJourni } from "../../services/apiJournis";
 import FormRow from "../../UI/FormRow";
 import Input from "../../UI/Input";
 import Row from "../../UI/Row";
 import FileInput from "../../UI/FIleInput";
 import Button from "../../UI/Button";
 import Textarea from "../../UI/Textarea";
-import toast from "react-hot-toast";
+import { useCreateJourni } from "./useCreateCabin";
 
-function CreateJourniForm() {
+function CreateJourniForm({ onCloseModal }) {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
-  const queryClient = useQueryClient();
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: createEditJourni,
-    onSuccess: () => {
-      toast.success("New Journi created successfully");
-      queryClient.invalidateQueries({ queryKey: ["Journis"] });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  const { isCreating, createJourni } = useCreateJourni();
 
   function onSubmit(data) {
     // console.log(data);
-    mutate({ ...data, thumbnail: data.thumbnail[0], images: data.images });
+    createJourni(
+      { ...data, thumbnail: data.thumbnail[0], images: data.images },
+      {
+        onSuccess: (data) => {
+          reset();
+          onCloseModal?.();
+        },
+      }
+    );
   }
 
   function onError(errors) {
     console.log(errors);
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)}>
+    <form
+      onSubmit={handleSubmit(onSubmit, onError)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow label="City" error={errors?.city?.message}>
         <Input
           disabled={isCreating}
@@ -115,6 +115,7 @@ function CreateJourniForm() {
         <button
           type="reset"
           className="px-4 py-2 rounded bg-white text-gray-800 cursor-pointer border border-gray-300/50 font-semibold"
+          onClick={() => onCloseModal?.()}
         >
           Cancel
         </button>
