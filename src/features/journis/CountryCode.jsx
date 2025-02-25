@@ -1,7 +1,7 @@
 import ReactCountryFlag from "react-country-flag";
 import { getCode } from "country-list";
 
-function CountryCode({ country }) {
+function CountryCode({ country, className }) {
   const countryCode = getCode(country);
   return (
     countryCode && (
@@ -9,7 +9,7 @@ function CountryCode({ country }) {
         countryCode={countryCode}
         svg
         style={{ width: "1.2em", height: "1.2em" }}
-        className="ml-2"
+        className={className}
       />
     )
   );
