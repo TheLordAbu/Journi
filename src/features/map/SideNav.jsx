@@ -2,7 +2,8 @@ import { navBarStyles } from "../../utils/Styles";
 import NavButton from "../../UI/NavButton";
 import Logo from "../../UI/Logo";
 
-function SideNav() {
+// eslint-disable-next-line react/prop-types
+function SideNav({ children }) {
   return (
     <aside className={`${navBarStyles} bg-stone-900 pt-16`}>
       <Logo type="map" />
@@ -14,6 +15,7 @@ function SideNav() {
           Countries
         </NavButton>
       </div>
+      <div className="h-128 overflow-scroll w-full my-8 px-4">{children}</div>
     </aside>
   );
 }

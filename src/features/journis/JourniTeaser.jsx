@@ -4,7 +4,6 @@ import { CiLocationOn } from "react-icons/ci";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { format } from "date-fns";
 import { useDeleteJourni } from "./useDeleteJourni";
-import Button from "../../UI/Button";
 
 function JourniTeaser({ journi }) {
   const { isDeleting, deleteJourni } = useDeleteJourni();
@@ -12,7 +11,7 @@ function JourniTeaser({ journi }) {
   return (
     <li className="w-full h-56 md:h-96 bg-stone-900  relative overflow-hidden rounded-md mb-2 group">
       <div
-        className="absolute top-4 right-4 z-50 cursor-pointer bg-stone-900/50 text-gray-100  p-2 rounded-full  shadow-md shadow-black/50"
+        className="absolute top-4 right-4 z-50 cursor-pointer bg-stone-900/50 text-gray-100  p-2 rounded-full  shadow-md shadow-black/50 hover:bg-brand"
         onClick={() => deleteJourni(id)}
         disabled={isDeleting}
       >
@@ -20,7 +19,7 @@ function JourniTeaser({ journi }) {
       </div>
       <Link to={`/journis/${id}`} className="h-full w-full">
         <img src={thumbnail} alt={`${(city, country)}`} />
-        <span className="flex items-center bg-stone-900/20 text-gray-100 tracking-wide font-semibold letter-spacing text-sm p-2 rounded-lg w-fit absolute bottom-4 left-4 group-hover:-translate-y-12 shadow-md shadow-black/50">
+        <span className="flex items-center bg-stone-900/50 text-gray-100 tracking-wide font-semibold letter-spacing text-sm p-2 rounded-lg w-fit absolute bottom-4 left-4 group-hover:-translate-y-12 shadow-md shadow-black/50">
           <CiLocationOn />
           {city}, {country}
         </span>

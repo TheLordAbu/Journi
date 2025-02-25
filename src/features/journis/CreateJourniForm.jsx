@@ -100,7 +100,7 @@ function CreateJourniForm() {
             })}
           />
         </FormRow>
-        <FormRow label="Upload Photos From Your Trip">
+        {/* <FormRow label="Upload Photos From Your Trip">
           <FileInput
             id="images"
             accept="image/*"
@@ -109,7 +109,7 @@ function CreateJourniForm() {
               required: "This field is required",
             })}
           />
-        </FormRow>
+        </FormRow> */}
       </Row>
       <Row type="end">
         <button
