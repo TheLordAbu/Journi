@@ -1,8 +1,12 @@
+/* eslint-disable react/prop-types */
 import { MapContainer, TileLayer } from "react-leaflet";
 import { HiOutlineHome } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
+// import { useJournis } from "../journis/useJournis";
+// import CountryCode from "../journis/CountryCode";
 
 function Map({ position }) {
+  // const { journis } = useJournis();
   return (
     <>
       <div>
@@ -25,6 +29,19 @@ function Map({ position }) {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+            {/* {journis.map((journi) => (
+              <Marker
+                position={[journi.city.position.lat, journi.city.position.lng]}
+                key={journi.id}
+              >
+                <Popup>
+                  <span>{journi.city}</span>{" "}
+                  <span>
+                    <CountryCode country={journi.country} />
+                  </span>
+                </Popup>
+              </Marker>
+            ))} */}
           </MapContainer>
         </div>
       </div>

@@ -1,4 +1,4 @@
-// import { useMoveBack } from "../hooks/useMoveBack";
+/* eslint-disable no-unused-vars */
 import Loader from "../../UI/Loader";
 import Carousel from "../../UI/Carousel";
 import { useGetJourni } from "./useGetJourni";
@@ -6,7 +6,6 @@ import CountryCode from "./CountryCode";
 
 function Journi() {
   const { isLoading, error, journi } = useGetJourni();
-  console.log(journi);
   // const { city, country, description } = journi;
   if (isLoading) return <Loader />;
   return (

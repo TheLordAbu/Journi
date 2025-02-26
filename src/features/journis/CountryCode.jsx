@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ReactCountryFlag from "react-country-flag";
 import { getCode } from "country-list";
 

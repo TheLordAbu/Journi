@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
 import FormRow from "../../UI/FormRow";
 import Input from "../../UI/Input";
