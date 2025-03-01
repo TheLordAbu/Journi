@@ -1,14 +1,16 @@
 // import { useMoveBack } from "../hooks/useMoveBack";
+import { useGetJourni } from "./useGetJourni";
 import Loader from "../../UI/Loader";
 import Carousel from "../../UI/Carousel";
-import { useGetJourni } from "./useGetJourni";
 import CountryCode from "./CountryCode";
+import Error from "../../pages/Error";
 
 function Journi() {
   const { isLoading, error, journi } = useGetJourni();
   console.log(journi);
   // const { city, country, description } = journi;
   if (isLoading) return <Loader />;
+  if (error) return <Error />;
   return (
     <div className="w-full journi">
       <Carousel />
