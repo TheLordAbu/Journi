@@ -1,24 +1,39 @@
-// import { useMoveBack } from "../hooks/useMoveBack";
+/* eslint-disable no-unused-vars */
+import { Link, useNavigate } from "react-router-dom";
 import { useGetJourni } from "./useGetJourni";
 import Loader from "../../UI/Loader";
 import Carousel from "../../UI/Carousel";
 import CountryCode from "./CountryCode";
-import Error from "../../pages/Error";
+import Heading from "../../UI/Heading";
 
 function Journi() {
   const { isLoading, error, journi } = useGetJourni();
-  console.log(journi);
+  const navigate = useNavigate();
   // const { city, country, description } = journi;
   if (isLoading) return <Loader />;
   if (error) return <Error />;
   return (
     <div className="w-full journi">
+      {/* back to journis */}
+      <button onClick={() => navigate("/journis")}>
+        &larr; Back to Journis
+      </button>
       <Carousel />
-      <div className="bg-gray-100  shadow flex">
-        <span>{journi.city}</span>, <span>{journi.country}</span>{" "}
-        <div className="ml-auto bg-stone-900/60 px-2 flex items-center justify-center">
-          <CountryCode country={journi.country} />
+      <div className="bg-gray-100 shadow flex items-center justify-center">
+        <div className="pl-4 flex justify-between w-full items-center font-semibold text-xl rounded-br-md  rounded-bl-md overflow-hidden">
+          <span>{journi.city}</span>,
+          <span className="ml-1">{journi.country}</span>
+          <div className="ml-auto bg-brand p-2">
+            <CountryCode type="journi" country={journi.country} />
+          </div>
         </div>
+      </div>
+
+      <div className="p-4 bg-gray-100 rounded-tl-lg rounded-tr-lg mt-6">
+        <Heading type="h2">A brief summary about your Journi</Heading>
+      </div>
+      <div className="bg-gray-50 p-6 rounded-br-md rounded-bl-md columns-2">
+        {journi.description}
       </div>
     </div>
   );

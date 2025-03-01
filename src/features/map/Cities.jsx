@@ -13,7 +13,7 @@ function Cities() {
       className="text-gray-100 font-semibold py-2 bg-stone-800 rounded p-4 mb-2"
     >
       {journi.city}
-      <CountryCode country={journi.country} />
+      <CountryCode country={journi.country} className="ml-2" />
     </div>
   ));
   const position = [51.505, -0.09];
