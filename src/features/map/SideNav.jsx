@@ -15,7 +15,7 @@ function SideNav({ children }) {
           Countries
         </NavButton>
       </div>
-      <div className="h-128 overflow-scroll w-full my-8 px-4">{children}</div>
+      <div className="h-128 overflow-y-scroll w-full my-8 px-4">{children}</div>
     </aside>
   );
 }

@@ -1,25 +1,18 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { HiOutlineHome } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
-// import { getGeolocation } from "../../services/apiGeoLocation";
-import { useGetGeolocation } from "./useGetGeolocation";
 import { useJournis } from "../journis/useJournis";
 import Loader from "../../UI/Loader";
-// import CountryCode from "../journis/CountryCode";
+import JourniMarker from "./JourniMarker";
 
 function Map({ position }) {
   const { journis, isLoading } = useJournis();
-  // console.log(useGetGeolocation(journis[1].city, journis[1].country));
-  // journis.map((journi) => {
-  //   console.log(journi);
-  // });
-  // console.log(journiss);
-  // const { data } = useGetGeolocation("Lagos", "Nigeria").data;
-  // console.log(data[0].latitude);
+  console.log(journis);
+
   if (isLoading) return <Loader />;
+
   return (
     <>
       <div>
@@ -42,22 +35,10 @@ function Map({ position }) {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {/* {journis.map((journi) => (
-              <Marker
-                position={[
-                  useGetGeolocation(journi.city.position.lat),
-                  useGetGeolocation(journi.city.position.lng),
-                ]}
-                key={journi.id}
-              >
-                <Popup>
-                  <span>{journi.city}</span>{" "}
-                  <span>
-                    <CountryCode country={journi.country} />
-                  </span>
-                </Popup>
-              </Marker>
-            ))} */}
+            {journis &&
+              journis.map((journi) => (
+                <JourniMarker key={journi.id} journi={journi} />
+              ))}
           </MapContainer>
         </div>
       </div>
