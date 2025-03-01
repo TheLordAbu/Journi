@@ -1,12 +1,25 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { HiOutlineHome } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
-// import { useJournis } from "../journis/useJournis";
+// import { getGeolocation } from "../../services/apiGeoLocation";
+import { useGetGeolocation } from "./useGetGeolocation";
+import { useJournis } from "../journis/useJournis";
+import Loader from "../../UI/Loader";
 // import CountryCode from "../journis/CountryCode";
 
 function Map({ position }) {
-  // const { journis } = useJournis();
+  const { journis, isLoading } = useJournis();
+  // console.log(useGetGeolocation(journis[1].city, journis[1].country));
+  // journis.map((journi) => {
+  //   console.log(journi);
+  // });
+  // console.log(journiss);
+  // const { data } = useGetGeolocation("Lagos", "Nigeria").data;
+  // console.log(data[0].latitude);
+  if (isLoading) return <Loader />;
   return (
     <>
       <div>
@@ -31,7 +44,10 @@ function Map({ position }) {
             />
             {/* {journis.map((journi) => (
               <Marker
-                position={[journi.city.position.lat, journi.city.position.lng]}
+                position={[
+                  useGetGeolocation(journi.city.position.lat),
+                  useGetGeolocation(journi.city.position.lng),
+                ]}
                 key={journi.id}
               >
                 <Popup>

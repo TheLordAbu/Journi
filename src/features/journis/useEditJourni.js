@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createEditJourni } from "../../services/apiJournis";
+import toast from "react-hot-toast";
 
 export function useEditJourni() {
   const queryClient = useQueryClient();
@@ -9,7 +10,7 @@ export function useEditJourni() {
       toast.success("cabin successfully edited");
       queryClient.invalidateQueries({ queryKey: ["journis"] });
     },
-    onError: (err) => toast.errorr(err.message),
+    onError: (err) => toast.error(err.message),
   });
   return { isEditing, editJourni };
 }
