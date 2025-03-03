@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 function FileInput({ disabled, varation, ref, ...rest }) {
-  if ((varation = "thumbnail"))
+  if (varation == "thumbnail")
     return (
       <input
         ref={ref}

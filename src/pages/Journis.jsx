@@ -9,6 +9,7 @@ import Container from "../UI/Container";
 import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 import AddJourni from "../features/journis/AddJourni";
+import CreateJourniForm from "../features/journis/CreateJourniForm";
 
 function Journis() {
   const { isLoading, journis } = useJournis();
@@ -31,9 +32,16 @@ function Journis() {
           <AddJourni />
         </Modal>
         {!journis.length && <Empty resourceName="Journis" />}
-        <ul className=" grid md:grid-cols-2 gap-2">
+        <ul className=" grid md:grid-cols-3 gap-2">
           {journis.map((journi) => (
-            <JourniTeaser key={journi.id} journi={journi} />
+            <>
+              <Modal>
+                <Modal.Window name="edit">
+                  <CreateJourniForm journiToEdit={journi} />
+                </Modal.Window>
+                <JourniTeaser key={journi.id} journi={journi} />
+              </Modal>
+            </>
           ))}
         </ul>
       </Container>

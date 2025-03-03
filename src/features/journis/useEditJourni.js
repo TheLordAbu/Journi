@@ -7,8 +7,8 @@ export function useEditJourni() {
   const { mutate: editJourni, isLoading: isEditing } = useMutation({
     mutationFn: ({ newJourniData, id }) => createEditJourni(newJourniData, id),
     onSuccess: () => {
-      toast.success("cabin successfully edited");
-      queryClient.invalidateQueries({ queryKey: ["journis"] });
+      toast.success("Journi successfully edited");
+      queryClient.invalidateQueries({ queryKey: ["Journi"] });
     },
     onError: (err) => toast.error(err.message),
   });

@@ -1,15 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "react-hot-toast";
 import AppLayout from "./UI/AppLayout";
-import Error from "./pages/Error";
+import Error from "./UI/Error";
 import AppHomePage from "./pages/AppHomePage";
 import Journis from "./pages/Journis";
 import Cities from "./features/map/Cities";
 import Countries from "./features/map/Countries";
 import Login from "./pages/Login";
 import CreateUser from "./pages/CreateUser";
-import { Toaster } from "react-hot-toast";
 import Journi from "./features/journis/Journi";
 
 const queryClient = new QueryClient({

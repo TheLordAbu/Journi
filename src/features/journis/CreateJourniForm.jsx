@@ -1,30 +1,52 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
+import { useCreateJourni } from "./useCreateCabin";
+import { useEditJourni } from "./useEditJourni";
 import FormRow from "../../UI/FormRow";
 import Input from "../../UI/Input";
 import Row from "../../UI/Row";
 import FileInput from "../../UI/FIleInput";
 import Button from "../../UI/Button";
 import Textarea from "../../UI/Textarea";
-import { useCreateJourni } from "./useCreateCabin";
 
-function CreateJourniForm({ onCloseModal }) {
-  const { register, handleSubmit, reset, formState } = useForm();
+function CreateJourniForm({ journiToEdit = {}, onCloseModal }) {
+  const { id: editId, editValues } = journiToEdit;
+  const isEditSession = Boolean(editId);
+  const { register, handleSubmit, reset, formState } = useForm({
+    defaultValues: isEditSession ? editValues : {},
+  });
   const { errors } = formState;
   const { isCreating, createJourni } = useCreateJourni();
+  const { isEditing, editJourni } = useEditJourni();
+
+  const isWorking = isCreating || isEditing;
 
   function onSubmit(data) {
-    // console.log(data);
-    createJourni(
-      { ...data, thumbnail: data.thumbnail[0], images: data.images },
-      {
-        onSuccess: (data) => {
-          reset();
-          onCloseModal?.();
-        },
-      }
-    );
+    // prettier-ignore
+    const thumbnail = typeof data.thumbnail === "string" ? data.thumbnail : data.thumbnail[0];
+    const images = typeof data.images === "string" ? data.images : data.images;
+    console.log(data);
+    if (isEditSession)
+      editJourni(
+        { newJourniData: { ...data, thumbnail, images }, id: editId },
+        {
+          onSuccess: (data) => {
+            reset();
+            onCloseModal?.();
+          },
+        }
+      );
+    else
+      createJourni(
+        { ...data, thumbnail: data?.thumbnail[0], images: data?.images },
+        {
+          onSuccess: (data) => {
+            reset();
+            onCloseModal?.();
+          },
+        }
+      );
   }
 
   function onError(errors) {
@@ -37,7 +59,7 @@ function CreateJourniForm({ onCloseModal }) {
     >
       <FormRow label="City" error={errors?.city?.message}>
         <Input
-          disabled={isCreating}
+          disabled={isWorking}
           type="text"
           id="city"
           {...register("city", {
@@ -47,7 +69,7 @@ function CreateJourniForm({ onCloseModal }) {
       </FormRow>
       <FormRow label="Country" error={errors?.country?.message}>
         <Input
-          disabled={isCreating}
+          disabled={isWorking}
           type="text"
           id="country"
           {...register("country", {
@@ -60,7 +82,7 @@ function CreateJourniForm({ onCloseModal }) {
         error={errors?.description?.message}
       >
         <Textarea
-          disabled={isCreating}
+          disabled={isWorking}
           name=""
           id="description"
           className="border border-gray-300 px-3.5 py-2.5 shadow-2xs rounded"
@@ -72,7 +94,7 @@ function CreateJourniForm({ onCloseModal }) {
       <Row type="2-cols">
         <FormRow label="Arrival date" error={errors?.city?.message}>
           <Input
-            disabled={isCreating}
+            disabled={isWorking}
             type="date"
             id="startDate"
             {...register("startDate", {
@@ -82,7 +104,7 @@ function CreateJourniForm({ onCloseModal }) {
         </FormRow>
         <FormRow label="Leaving date" error={errors?.city?.message}>
           <Input
-            disabled={isCreating}
+            disabled={isWorking}
             type="date"
             id="endDate"
             {...register("endDate", {
@@ -98,7 +120,7 @@ function CreateJourniForm({ onCloseModal }) {
             accept="image/*"
             varation="thumbnail"
             {...register("thumbnail", {
-              required: "This field is required",
+              required: isEditSession ? false : "This field is required",
             })}
           />
         </FormRow>
@@ -121,7 +143,9 @@ function CreateJourniForm({ onCloseModal }) {
         >
           Cancel
         </button>
-        <Button disabled={isCreating}>Add Journi</Button>
+        <Button disabled={isWorking}>
+          {isEditSession ? "Edit Journi" : " Add Journi"}
+        </Button>
       </Row>
     </form>
   );

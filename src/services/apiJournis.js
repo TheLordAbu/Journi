@@ -39,31 +39,29 @@ export async function deleteJourni(id) {
 }
 
 export async function createEditJourni(newJourni, id) {
+  // Create THumbnail name & path
   const hasImagePath = newJourni.thumbnail?.startsWith?.(supabaseUrl);
-  const thumbnailName = `${Math.random()}--${
-    newJourni.thumbnail.name
-  }`.replaceAll("/", "");
+  // prettier-ignore
+  const thumbnailName = `${Math.random()}--${newJourni.thumbnail.name}`.replaceAll("/", "");
   const thumbnailPath = hasImagePath
     ? newJourni.thumbnail
     : `${supabaseUrl}/storage/v1/object/JourniImages/${thumbnailName}`;
 
+  // // Create images name and path
+  // const hasImagesPath = newJourni.images?.startsWith?.(supabaseUrl);
+  // // prettier-ignore
+  // const imagesNames = `${Math.random()}--${newJourni.images.name}`.replaceAll('/', '');
+  // // prettier-ignore
+  // const imagesPath = hasImagesPath ? newJourni.images : `${supabaseUrl}/storage/v1/object/JourniImages/${imagesNames}`;
+
   let query = supabase.from("Journis");
   // Create
-  if (!id)
-    query = query.insert([
-      {
-        ...newJourni,
-        thumbnail: thumbnailPath,
-      },
-    ]);
+  if (!id) query = query.insert([{ ...newJourni, thumbnail: thumbnailPath }]);
 
   //edit
   if (id)
     query = query
-      .update({
-        ...newJourni,
-        thumbnail: thumbnailPath,
-      })
+      .update({ ...newJourni, thumbnail: thumbnailPath })
       .eq("id", id)
       .select();
 
@@ -79,6 +77,7 @@ export async function createEditJourni(newJourni, id) {
   const { error: storageError } = await supabase.storage
     .from("JourniImages")
     .upload(thumbnailName, newJourni.thumbnail);
+  // .upload(imagesNames, newJourni.images);
 
   // delete cabin if error uploading image
   if (storageError) {

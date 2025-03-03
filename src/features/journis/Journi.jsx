@@ -5,6 +5,7 @@ import Loader from "../../UI/Loader";
 import Carousel from "../../UI/Carousel";
 import CountryCode from "./CountryCode";
 import Heading from "../../UI/Heading";
+import Error from "../../UI/Error";
 
 function Journi() {
   const { isLoading, error, journi } = useGetJourni();
