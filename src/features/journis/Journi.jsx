@@ -6,6 +6,7 @@ import Carousel from "../../UI/Carousel";
 import CountryCode from "./CountryCode";
 import Heading from "../../UI/Heading";
 import Error from "../../UI/Error";
+import Button from "../../UI/Button";
 
 function Journi() {
   const { isLoading, error, journi } = useGetJourni();
@@ -16,12 +17,12 @@ function Journi() {
   return (
     <div className="w-full journi">
       {/* back to journis */}
-      <button onClick={() => navigate("/journis")}>
+      <Button onClick={() => navigate("/journis")}>
         &larr; Back to Journis
-      </button>
+      </Button>
       <Carousel />
       <div className="bg-gray-100 shadow flex items-center justify-center">
-        <div className="pl-4 flex justify-between w-full items-center font-semibold text-xl rounded-br-md  rounded-bl-md overflow-hidden">
+        <div className="pl-4 flex justify-between w-full items-center font-semibold text-xl rounded-br-md rounded-bl-md overflow-hidden">
           <span>{journi.city}</span>,
           <span className="ml-1">{journi.country}</span>
           <div className="ml-auto bg-brand p-2">

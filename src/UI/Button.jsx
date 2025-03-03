@@ -21,7 +21,7 @@ function Button({ type, children, icon, onClick, disabled }) {
     );
   return (
     <button
-      className="px-4 py-2 rounded bg-gradient-to-r from-brand-light to-brand-dark shadow-md text-gray-50 font-semibold cursor-pointer"
+      className="px-4 py-2 rounded bg-gradient-to-r from-brand-light to-brand-dark shadow-md text-gray-50 font-semibold cursor-pointer hover:bg-gradient-to-l"
       onClick={onClick}
       disabled={disabled}
     >
