@@ -17,7 +17,7 @@ function JourniTeaser({ journi }) {
 
   // function handleEditJourni()
   return (
-    <li className="w-full h-56 md:h-96 bg-stone-900  relative overflow-hidden rounded-md mb-2 group">
+    <li className="w-full h-56 md:h-96 bg-stone-900  relative overflow-hidden rounded-sm group">
       <Modal.Open opens="edit">
         <JourniTeaserButton
           onClick={() => editJourni(id)}
