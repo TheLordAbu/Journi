@@ -11,6 +11,7 @@ import Countries from "./features/map/Countries";
 import Login from "./pages/Login";
 import CreateUser from "./pages/CreateUser";
 import Journi from "./features/journis/Journi";
+import Test from "./pages/Test";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/app", element: <AppHomePage /> },
+      { path: "/test", element: <Test /> },
       { path: "/journis", element: <Journis /> },
       { path: "/journis/:id", element: <Journi /> },
     ],
